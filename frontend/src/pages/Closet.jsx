@@ -1,11 +1,11 @@
 import React from "react";
 
-const Fourth = () => {
+const Closet = () => {
   return (
     <div>
-      <h1>Fourth</h1>
+      <h1>Closet</h1>
     </div>
   );
 };
 
-export default Fourth;
+export default Closet;

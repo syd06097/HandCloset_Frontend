@@ -12,7 +12,7 @@ const BottomNav = () => {
   return (
     <nav className="wrapper">
       {/* 하단 네비게이션 최상위 태그 */}
-      <Link to="/first" className="nav-link" onClick={() => setActiveNav(1)}>
+      <Link to="/Main" className="nav-link" onClick={() => setActiveNav(1)}>
         <div>
           <FontAwesomeIcon
             icon="home"
@@ -21,7 +21,7 @@ const BottomNav = () => {
           />
         </div>
       </Link>
-      <Link to="/second" className="nav-link" onClick={() => setActiveNav(2)}>
+      <Link to="/Closet" className="nav-link" onClick={() => setActiveNav(2)}>
         <div>
           <FontAwesomeIcon
             icon="box"
@@ -30,7 +30,7 @@ const BottomNav = () => {
           />
         </div>
       </Link>
-      <Link to="/third" className="nav-link" onClick={() => setActiveNav(3)}>
+      <Link to="/Calendar" className="nav-link" onClick={() => setActiveNav(3)}>
         <div>
           <FontAwesomeIcon
             icon="calendar"
@@ -39,7 +39,7 @@ const BottomNav = () => {
           />
         </div>
       </Link>
-      <Link to="/fourth" className="nav-link" onClick={() => setActiveNav(4)}>
+      <Link to="/MyPage" className="nav-link" onClick={() => setActiveNav(4)}>
         <div class="menu_title">
           <FontAwesomeIcon
             icon="user"
