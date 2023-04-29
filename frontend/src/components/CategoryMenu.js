@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "../css/Menu.css";
+// import "../css/Menu.css";
+import styled from "styled-components";
 const categories = [
   {
     name: "전체",
@@ -51,26 +52,65 @@ function CategoryMenu() {
 
   return (
     <div>
-      <ol>
-        {categories.map((category) => (
-          <li
-            key={category.name}
-            className={activeCategory === category.name ? "active" : ""}
-            onClick={() => setActiveCategory(category.name)}
-          >
-            {category.name}
-          </li>
-        ))}
-      </ol>
-      <ul>
-        {categories
-          .find((category) => category.name === activeCategory)
-          .subcategories.map((subcategory) => (
-            <li key={subcategory}>{subcategory}</li>
+      <StyledHeader>
+        <ol>
+          {categories.map((category) => (
+            <li
+              key={category.name}
+              className={activeCategory === category.name ? "active" : ""}
+              onClick={() => setActiveCategory(category.name)}
+            >
+              {category.name}
+            </li>
           ))}
-      </ul>
+        </ol>
+        <ul>
+          {categories
+            .find((category) => category.name === activeCategory)
+            .subcategories.map((subcategory) => (
+              <li key={subcategory}>{subcategory}</li>
+            ))}
+        </ul>
+      </StyledHeader>
     </div>
   );
 }
+const StyledHeader = styled.header`
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-right: 11px;
+    display: flex;
+    font-size: 15px;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  ol {
+    list-style: none;
+    padding: 0;
+    margin-right: 11px;
+    display: flex;
+    font-size: 23px;
+    overflow: auto;
+    white-space: nowrap;
+  }
 
+  li {
+    cursor: pointer;
+    margin-left: 11px;
+    margin-right: 11px;
+  }
+
+  li:last-child {
+    margin-right: 0;
+  }
+
+  li.active {
+    font-weight: bold;
+  }
+
+  ul + ul {
+    margin-top: 10px;
+  }
+`;
 export default CategoryMenu;
