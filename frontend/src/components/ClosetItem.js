@@ -13,7 +13,7 @@ const ClosetItem = () => {
           alt="추가하기"
           style={{ width: "15%" }}
           onClick={() => {
-            navigate("/calendar");
+            navigate("/Closet/add");
           }}
         />
       </div>

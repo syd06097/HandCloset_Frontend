@@ -5,6 +5,7 @@ import Main from "./pages/Main";
 import Calendar from "./pages/Calendar";
 import MyPage from "./pages/MyPage";
 import Closet from "./pages/Closet";
+import ClothingForm from "./pages/ClothingForm";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/Calendar" element={<Calendar />} />
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/Closet" element={<Closet />} />
+        <Route path="/Closet/add" element={<ClothingForm />} />
       </Routes>
     </div>
   );
