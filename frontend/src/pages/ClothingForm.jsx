@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ClothingForm.module.css"
 
+
 const ClothingForm = () => {
     const [image, setImage] = useState(null);
     const [category, setCategory] = useState("");
@@ -11,14 +12,21 @@ const ClothingForm = () => {
     const handleImageChange = (e) => {
         const selectedFile = e.target.files[0];
         if (selectedFile) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
+            const fileExtension = selectedFile.name.split(".").pop().toLowerCase();
+            if (["jpg", "jpeg", "png", "gif"].includes(fileExtension)) {
+              const reader = new FileReader();
+              reader.onloadend = () => {
                 setImage(reader.result);
-            };
-            reader.readAsDataURL(selectedFile);
-        } else {
+              };
+              reader.readAsDataURL(selectedFile);
+            } else {
+              // 이미지 파일이 아닐 경우 처리할 내용
+              alert("이미지 파일만 업로드 가능합니다.");
+              e.target.value = null;
+            }
+          } else {
             setImage("");
-        }
+          }
     };
 
     const handleCategoryChange = (e) => {
@@ -53,14 +61,19 @@ const ClothingForm = () => {
     };
 
     const categories = [
-        { name: "상의", subcategories: ["티셔츠", "셔츠"] },
-        { name: "하의", subcategories: ["바지", "청바지"] },
+        { name: "상의", subcategories: ["티셔츠", "셔츠","맨투맨/후디","니트","기타"] },
+        { name: "하의", subcategories: ["바지", "청바지","트레이닝/조거","기타"] },
+        { name: "아우터", subcategories: ["코트", "자켓/점퍼","패딩","후드집업","가디건/베스트","기타"] },
+        { name: "신발", subcategories: ["운동화", "구두","부츠","샌들","기타"] },
+        { name: "가방", subcategories: ["백팩", "숄더/토트백","크로스백","클러치","기타"] },
+        { name: "악세사리", subcategories: ["모자", "양말","쥬얼리/시계","머플러/스카프","벨트","기타"] },
+        { name: "기타", subcategories: ["이너웨어", "잠옷","수영복"] }
     ];
 
     return (
         <form onSubmit={handleSubmit}>
             <div className={styles.formGroup}>
-                <label className={styles.label}>이미지</label>
+                <label className={styles.label}>아이템추가</label>
                 <div className={styles.thumbnailContainer}>
                     {image ? (
                         <div>
@@ -73,22 +86,20 @@ const ClothingForm = () => {
                 </div>
                 <label for={styles.file}>
                         <div className={styles.btn_upload}>파일업로드</div>             
-                <input type="file" name="file" id={styles.file} onChange={handleImageChange} />
+                <input type="file" name="file" id={styles.file} accept="image/*"onChange={handleImageChange} required/>
                 </label>
             </div>
             <div>
-                <label>
-                    카테고리
+                <label className={styles.label}>카테고리</label>    
                     <br/>
-                    <select value={category} onChange={handleCategoryChange} className={styles.select}>
-                        <option value="">-- 선택 --</option>
+                    <select value={category} onChange={handleCategoryChange} className={styles.select} required>
+                        <option value="">없음</option>
                         {categories.map((category) => (
                             <option key={category.name} value={category.name}>
                                 {category.name}
                             </option>
                         ))}
                     </select>
-                </label>
             </div>
             {category && (
                 <div style={{marginTop:"1px"}}>
@@ -103,7 +114,8 @@ const ClothingForm = () => {
                                         value={subcat}
                                         checked={subcategory === subcat}
                                         onChange={handleSubcategoryChange} 
-                                        id={styles.subcategory}/>
+                                        id={styles.subcategory}
+                                        required/>
                                     <span>{subcat}</span>
                                 </label>
                             ))}
@@ -111,7 +123,7 @@ const ClothingForm = () => {
                 </div>
             )}
             <br/>
-            <h3>계절</h3>
+            <span className={styles.label}>계절</span>
             <div className={styles.ckbox_group}>
                     <label className={styles.btn_ckbox}> 
                         <input
@@ -155,16 +167,18 @@ const ClothingForm = () => {
             </div>
             <div>
                 <label>
-                    설명
+                    <span className={styles.label}>설명</span>
                     <br />
                     <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+                        className={styles.area}
+                        placeholder="설명을 입력해주세요"
                     />
                 </label>
             </div>
             <div>
-                <button type="submit">제출</button>
+                <button type="submit" className={styles.btn_submit}>제출</button>
             </div>
         </form>
     );

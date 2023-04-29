@@ -5,6 +5,18 @@
     justify-content: center;
     align-items: center;
 }
+@media (max-width: 768px) {
+    .formGroup {
+      margin-top: 50px;
+    }
+  }
+  
+  /* 화면 크기가 768px 이상인 경우 */
+@media (min-width: 768px) {
+    .formGroup {
+      margin-top: 100px;
+    }
+}
 
 .label {
     margin-bottom: 8px;
@@ -47,7 +59,7 @@
     
 
 }
-.btn_upload div:hover {
+.btn_upload:hover {
         background: rgb(77,77,77);
         color: #fff;
     }
@@ -70,6 +82,7 @@
     border-radius: 4px;
     outline: 0 none;
     margin-top: 10px;
+    border: none;
 }
 
 .select option {
@@ -136,4 +149,45 @@
     justify-content: center;
     align-items: center;
     margin: 20px 0;
+}
+
+.area{
+    border: none;
+    resize: none; 
+    margin-top: 5px;
+}
+
+.area:focus{
+    outline: none;
+}
+
+.btn_submit{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    cursor: pointer
+}
+.btn_submit:hover{
+    background-color: #ccc;
+}
+
+input[type="submit"]:disabled {
+    background-color: #ccc;
+    color: #999;
+    border: none;
+    cursor: not-allowed;
+}
+
+input[type="submit"] {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    color: #333;
+    border: none;
+    cursor: pointer;
 }
