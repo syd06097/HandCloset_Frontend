@@ -16,7 +16,7 @@ const BottomNav = () => {
         <div>
           <FontAwesomeIcon
             icon="home"
-            size={2}
+            size="2x"
             className={activeNav === 1 ? "nav-item active" : "nav-item"}
           />
         </div>
@@ -25,7 +25,7 @@ const BottomNav = () => {
         <div>
           <FontAwesomeIcon
             icon="box"
-            size={2}
+            size="2x"
             className={activeNav === 2 ? "nav-item active" : "nav-item"}
           />
         </div>
@@ -34,7 +34,7 @@ const BottomNav = () => {
         <div>
           <FontAwesomeIcon
             icon="calendar"
-            size={2}
+            size="2x"
             className={activeNav === 3 ? "nav-item active" : "nav-item"}
           />
         </div>
@@ -43,7 +43,7 @@ const BottomNav = () => {
         <div class="menu_title">
           <FontAwesomeIcon
             icon="user"
-            size={2}
+            size="2x"
             className={activeNav === 4 ? "nav-item active" : "nav-item"}
           />
         </div>
